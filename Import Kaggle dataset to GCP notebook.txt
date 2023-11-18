@@ -1,0 +1,50 @@
+
+# # IMPORTANT: RUN THIS CELL IN ORDER TO IMPORT YOUR KAGGLE DATASETS
+# # TO THE CORRECT LOCATION (/kaggle/input) IN YOUR NOTEBOOK,
+# # THEN FEEL FREE TO DELETE CELL.
+
+# import os
+# import sys
+# from tempfile import NamedTemporaryFile
+# from urllib.request import urlopen
+# from urllib.parse import unquote
+# from urllib.error import HTTPError
+# from zipfile import ZipFile
+
+# CHUNK_SIZE = 40960
+# DATASET_MAPPING = 'stanford-ribonanza-rna-folding:https%3A%2F%2Fstorage.googleapis.com%2Fkaggle-competitions-data%2Fkaggle-v2%2F51294%2F6923401%2Fbundle%2Farchive.zip%3FX-Goog-Algorithm%3DGOOG4-RSA-SHA256%26X-Goog-Credential%3Dgcp-kaggle-com%2540kaggle-161607.iam.gserviceaccount.com%252F20231117%252Fauto%252Fstorage%252Fgoog4_request%26X-Goog-Date%3D20231117T075939Z%26X-Goog-Expires%3D259200%26X-Goog-SignedHeaders%3Dhost%26X-Goog-Signature%3D84052eedce3203c8f20d6695b5cc252363abc4300737d5868db5731e2a53363755edb5527149b1704d50ab9b2ce8b2cb386e52574179f616b2200e05e7349cc87d5f8f562ac07399b6791862f81639cee6cbba5c2509c6e1fea6e2cdd3b010df637b119f81dd21b0aa90b2f1979006c8db65afae01f115862b5212a9efefb77db0bfe4345abc2247847c3e68ffcb650e4a088b976b4d7431161be65decef08c826073124123e38a0d7080c41514db5c56657f2c1f0d235f15fb693de23225590b57312cb9f647f0f24b32e9dffd003a40c95563726f3e41edc9461ddcdaa8acbcfd900833b280f0282058ae9c3621fd3293a97c36bf59e32227c0915b318ec28'
+# KAGGLE_INPUT_PATH='/home/kaggle/input'
+# KAGGLE_INPUT_SYMLINK='/kaggle'
+
+# os.makedirs(KAGGLE_INPUT_PATH, 777)
+# os.symlink(KAGGLE_INPUT_PATH, os.path.join('..', 'input'), target_is_directory=True)
+# os.makedirs(KAGGLE_INPUT_SYMLINK)
+# os.symlink(KAGGLE_INPUT_PATH, os.path.join(KAGGLE_INPUT_SYMLINK, 'input'), target_is_directory=True)
+
+# for dataset_mapping in DATASET_MAPPING.split(','):
+#     directory, download_url_encoded = dataset_mapping.split(':')
+#     download_url = unquote(download_url_encoded)
+#     destination_path = os.path.join(KAGGLE_INPUT_PATH, directory)
+#     try:
+#         with urlopen(download_url) as zipfileres, NamedTemporaryFile() as tfile:
+#             total_length = zipfileres.headers['content-length']
+#             print(f'Downloading {directory}, {total_length} bytes zipped')
+#             dl = 0
+#             data = zipfileres.read(CHUNK_SIZE)
+#             while len(data) > 0:
+#                 dl += len(data)
+#                 tfile.write(data)
+#                 done = int(50 * dl / int(total_length))
+#                 sys.stdout.write(f"\r[{'=' * done}{' ' * (50-done)}] {dl} bytes downloaded")
+#                 sys.stdout.flush()
+#                 data = zipfileres.read(CHUNK_SIZE)
+#             print(f'\nUnzipping {directory}')
+#             with ZipFile(tfile) as zfile:
+#                 zfile.extractall(destination_path)
+#     except HTTPError as e:
+#         print(f'Failed to load (likely expired) {download_url} to path {destination_path}')
+#         continue
+#     except OSError as e:
+#         print(f'Failed to load {download_url} to path {destination_path}')
+#         continue
+# print('Dataset import complete.')

@@ -1,0 +1,16 @@
+The error you're encountering is related to file permissions. It seems that the Python script does not have the necessary permissions to access the file or directory. Here are some steps you can take to resolve this issue¹:
+
+1. **Change the permissions of the file/directory**: You can change the permissions of the file or directory using the `chmod` command in your terminal. For example, you can use the command `sudo chmod 600 /home/kaggle/kaggle.json` to change the permissions of the `kaggle.json` file¹.
+
+2. **Change the owner of the file/directory**: If changing the permissions does not resolve the issue, you might need to change the owner of the file or directory using the `chown` command. For example, `sudo chown `whoami`: /home/kaggle/kaggle.json` would change the owner of the `kaggle.json` file to the current user¹.
+
+3. **Set Kaggle Configuration Directory**: You can set your Kaggle configuration directory by adding `export KAGGLE_CONFIG_DIR='/home/kaggle/'` to your environment¹.
+
+Please replace `/home/kaggle/kaggle.json` with your actual path and filename. If these steps do not resolve your issue, please let me know so I can assist you further.
+
+Source: Conversation with Bing, 02/11/2023
+(1) Permission denied while downloading dataset from Kaggle API. https://stackoverflow.com/questions/58005383/permission-denied-while-downloading-dataset-from-kaggle-api.
+(2) PermissionError: [Errno 13] Permission denied - Stack Overflow. https://stackoverflow.com/questions/36434764/permissionerror-errno-13-permission-denied.
+(3) Python PermissionError: [errno 13] permission denied Solution. https://careerkarma.com/blog/python-permissionerror-errno-13-permission-denied/.
+(4) python - Errno 13 Permission denied - Stack Overflow. https://stackoverflow.com/questions/41910583/errno-13-permission-denied.
+(5) undefined. https://www.kaggle.com/general/51898.
