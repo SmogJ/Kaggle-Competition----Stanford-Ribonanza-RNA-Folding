@@ -217,8 +217,6 @@ MFE structure in RNA analysis refers to the secondary structure that contributes
 
 [draw_rna](www.github.com/DasLab/draw_rna) is a Python tool that allows you to generate quick secondary structures of nucleic acids (such as RNA) either via a Jupyter notebook or the command line ([DasLab](www.github.com/DasLab/draw_rna)).
 
-![rna_image](image.png)
-
 
 ## Feature Extraction and Engineering
 
